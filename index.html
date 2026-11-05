@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NAQASH TECH | VIP Cyberpunk Portfolio & Admin Suite</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        cyber: { 500: '#06b6d4', 900: '#0f172a' }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Orbitron & Rajdhani -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Rajdhani', sans-serif; }
+        .font-orbitron { font-family: 'Orbitron', sans-serif; }
+        .glass-panel { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(12px); border: 1px solid rgba(6, 182, 212, 0.3); }
+        .neon-glow { box-shadow: 0 0 20px rgba(6, 182, 212, 0.4); }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-cyan-500 selection:text-slate-950">
+
+    <!-- Top Navigation Bar -->
+    <header class="w-full glass-panel sticky top-0 z-40 px-6 py-4 flex items-center justify-between border-b border-cyan-500/20">
+        <div class="flex items-center space-x-3">
+            <img id="header-dp" src="https://i.ibb.co/Q3gTwnCZ/1791526994057.jpg" alt="Profile" class="w-10 h-10 rounded-xl border border-cyan-400 object-cover neon-glow">
+            <div>
+                <h1 class="font-orbitron font-bold text-cyan-400 text-base tracking-wider">NAQASH TECH</h1>
+                <p class="text-[10px] text-slate-400 uppercase tracking-widest">VIP Cyber Suite</p>
+            </div>
+        </div>
+        <div class="flex items-center space-x-3">
+            <!-- PWA Install Button -->
+            <button id="pwa-install-btn" class="hidden px-3 py-1.5 bg-cyan-500/25 hover:bg-cyan-500 text-cyan-300 hover:text-slate-950 text-xs font-semibold rounded-lg border border-cyan-500/40 transition-all">
+                <i class="fas fa-download mr-1"></i> Install PWA
+            </button>
+            <!-- Admin Panel Toggle Button -->
+            <button onclick="toggleAdminPanel()" class="px-3 py-1.5 bg-slate-900 hover:bg-cyan-500 text-cyan-400 hover:text-slate-950 text-xs font-semibold rounded-lg border border-cyan-500/40 transition-all flex items-center space-x-1">
+                <i class="fas fa-user-shield"></i>
+                <span class="hidden sm:inline">Admin</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="max-w-4xl mx-auto px-4 py-8 flex-1 w-full">
+        <!-- Hero Section -->
+        <div class="text-center my-8">
+            <h2 class="font-orbitron text-3xl md:text-5xl font-extrabold text-white tracking-wide">WELCOME TO <span class="text-cyan-400">NAQASH TECH</span></h2>
+            <p class="text-slate-400 text-sm mt-3 max-w-lg mx-auto">Full-stack web developer, creator & digital designer suite based in Rawat, Islamabad[span_0](start_span)[span_0](end_span).</p>
+        </div>
+
+        <!-- Gallery Showcase Section -->
+        <section class="mb-10">
+            <h3 class="font-orbitron text-cyan-400 text-lg font-bold uppercase tracking-wider border-l-4 border-cyan-400 pl-3 mb-4">Studio Gallery & Showcase</h3>
+            <div id="gallery-grid" class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <!-- Gallery items will load dynamically -->
+            </div>
+        </section>
+
+        <!-- Admin Editable Side Drawer / Tools Hub Section -->
+        <div class="mb-6 flex items-center justify-between">
+            <h3 class="font-orbitron text-cyan-400 text-lg font-bold uppercase tracking-wider border-l-4 border-cyan-400 pl-3">Side Drawer Tools / Hub</h3>
+            <span class="text-xs text-slate-400 font-mono">Live Counter: <span id="visitor-count" class="text-cyan-400 font-bold">1410</span></span>
+        </div>
+
+        <div id="side-drawer-tools-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <!-- Admin editable buttons will render here automatically -->
+        </div>
+
+        <!-- Leadership Team Section -->
+        <section class="mt-12">
+            <h3 class="font-orbitron text-cyan-400 text-lg font-bold uppercase tracking-wider border-l-4 border-cyan-400 pl-3 mb-4">Leadership Team</h3>
+            <div class="glass-panel p-4 rounded-2xl flex items-center space-x-4">
+                <img src="https://i.ibb.co/VcsCRrzW/file-000000004368820baf25d9084ac1d5d1.png" alt="CEO" class="w-12 h-12 rounded-xl object-cover border border-cyan-400">
+                <div>
+                    <h4 class="text-white font-bold text-sm">سید جرار شاہ (Syed Jarar Shah)</h4>
+                    <p class="text-xs text-cyan-400">Chief Executive Officer (CEO) - NAQASH X JARAR Team[span_1](start_span)[span_1](end_span)</p>
+                </div>
+            </div>
+        </section>
+    </main>
+<!-- MR_NAQASH VIP ADMIN SUITE MODAL -->
+    <div id="admin-modal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md hidden flex items-center justify-center p-4">
+        <div class="glass-panel w-full max-w-lg rounded-2xl p-6 relative border border-cyan-500/50 shadow-2xl max-h-[90vh] overflow-y-auto">
+            <div class="flex items-center justify-between pb-4 border-b border-cyan-500/30 mb-4">
+                <h3 class="font-orbitron text-cyan-400 text-base font-bold flex items-center">
+                    <i class="fas fa-user-shield mr-2"></i> MR_NAQASH VIP ADMIN SUITE
+                </h3>
+                <button onclick="toggleAdminPanel()" class="text-slate-400 hover:text-white text-lg"><i class="fas fa-times"></i></button>
+            </div>
+            
+            <div class="space-y-4 text-xs">
+                <div>
+                    <label class="block text-slate-300 font-semibold mb-1">1. Main Profile DP URL:</label>
+                    <input type="text" id="admin-dp" class="w-full bg-slate-900 border border-slate-800 rounded-lg p-2.5 text-cyan-300 focus:border-cyan-500 outline-none" value="https://i.ibb.co/Q3gTwnCZ/1791526994057.jpg">
+                </div>
+
+                <div>
+                    <label class="block text-slate-300 font-semibold mb-1">2. Gallery Photos (Format: URL | Header Text):</label>
+                    <textarea id="admin-gallery" rows="3" class="w-full bg-slate-900 border border-slate-800 rounded-lg p-2.5 text-cyan-300 focus:border-cyan-500 outline-none font-mono text-[11px]">https://i.ibb.co/Q3gTZLWJ/file-000000004c98820ba4dc07e5aa98bbf2.png | STUDIO SHOT
+https://i.ibb.co/Q3aTwmC7/1791526994057.jpg | CYBER VIBE</textarea>
+                </div>
+
+                <div>
+                    <label class="block text-slate-300 font-semibold mb-1">4. Side Drawer Buttons / Tools (Format: Name | Desc | IconClass | Link):</label>
+                    <textarea id="admin-tools-textarea" rows="6" class="w-full bg-slate-900 border border-slate-800 rounded-lg p-2.5 text-cyan-300 focus:border-cyan-500 outline-none font-mono text-[11px] leading-relaxed">NAQASH TECH TOOL | All-in-one web utilities | fa-code | #
+BUG BOT | Automated testing script | fa-bug | #
+MD MINI | Lightweight bot instance | fa-terminal | #
+SOURCES CODE | Ready-mode project files | fa-code | #
+WINGO PREDICTION | Live Wingo game prediction tool | fa-gamepad | https://naqash-team.freehosting.dev/view_site.php?user=2&site=myowngg</textarea>
+                </div>
+
+                <div class="flex space-x-3 pt-2">
+                    <button onclick="saveAdminData()" class="flex-1 py-3 bg-red-600 hover:bg-red-500 text-white font-bold rounded-xl transition-all shadow-[0_0_15px_rgba(239,68,68,0.4)] font-orbitron text-xs">Save & Apply All Live</button>
+                    <button onclick="resetAdminData()" class="px-4 py-3 bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold rounded-xl transition-all">Reset</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="w-full text-center py-6 border-t border-cyan-500/20 text-slate-500 text-xs mt-10">
+        <p>© 2026 NAQASH TECH. All Rights Reserved. Crafted with Cyberpunk Precision[span_0](start_span)[span_0](end_span).</p>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Default data
+        const defaultTools = `NAQASH TECH TOOL | All-in-one web utilities | fa-code | #
+BUG BOT | Automated testing script | fa-bug | #
+MD MINI | Lightweight bot instance | fa-terminal | #
+SOURCES CODE | Ready-mode project files | fa-code | #
+WINGO PREDICTION | Live Wingo game prediction tool | fa-gamepad | https://naqash-team.freehosting.dev/view_site.php?user=2&site=myowngg`;
+
+        const defaultGallery = [
+            { url: "https://i.ibb.co/Q3gTZLWJ/file-000000004c98820ba4dc07e5aa98bbf2.png", title: "STUDIO SHOT" },
+            { url: "https://i.ibb.co/Q3aTwmC7/1791526994057.jpg", title: "CYBER VIBE" }
+        ];
+
+        // Render Gallery & Tools from LocalStorage
+        function renderPortfolio() {
+            // Profile DP
+            const savedDp = localStorage.getItem('naqash_admin_dp') || "https://i.ibb.co/Q3gTwnCZ/1791526994057.jpg";
+            document.getElementById('header-dp').src = savedDp;
+            document.getElementById('admin-dp').value = savedDp;
+
+            // Gallery Render
+            const galleryGrid = document.getElementById('gallery-grid');
+            galleryGrid.innerHTML = '';
+            defaultGallery.forEach(item => {
+                galleryGrid.innerHTML += `
+                    <div class="glass-panel rounded-xl overflow-hidden group border border-cyan-500/30">
+                        <img src="${item.url}" alt="${item.title}" class="w-full h-32 object-cover group-hover:scale-105 transition-transform duration-300">
+                        <div class="p-2 text-center text-[10px] font-orbitron text-cyan-400 tracking-wider">${item.title}</div>
+                    </div>
+                `;
+            });
+
+            // Side Drawer Tools Render
+            const container = document.getElementById('side-drawer-tools-grid');
+            const savedToolsText = localStorage.getItem('naqash_admin_tools_text') || defaultTools;
+            document.getElementById('admin-tools-textarea').value = savedToolsText;
+
+            container.innerHTML = '';
+            const lines = savedToolsText.split('\n');
+
+            lines.forEach(line => {
+                if (line.trim() !== '') {
+                    const parts = line.split('|').map(p => p.trim());
+                    const name = parts[0] || 'Tool';
+                    const desc = parts[1] || 'Utility tool';
+                    const icon = parts[2] || 'fa-code';
+                    const link = parts[3] || '#';
+
+                    container.innerHTML += `
+                        <a href="${link}" target="${link === '#' ? '_self' : '_blank'}" class="group relative bg-slate-900/90 border border-cyan-500/30 rounded-2xl p-4 hover:border-cyan-400 hover:shadow-[0_0_20px_rgba(6,182,212,0.4)] transition-all duration-300 flex items-center space-x-4">
+                            <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 group-hover:bg-cyan-500 group-hover:text-slate-950 transition-all shrink-0">
+                                <i class="fas ${icon} text-lg"></i>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <h4 class="text-white font-bold text-sm tracking-wide group-hover:text-cyan-300 transition-colors truncate">${name}</h4>
+                                <p class="text-slate-400 text-xs truncate mt-0.5">${desc}</p>
+                            </div>
+                            <div class="text-cyan-400/50 group-hover:text-cyan-400 transition-colors">
+                                <i class="fas fa-chevron-right text-xs"></i>
+                            </div>
+                        </a>
+                    `;
+                }
+            });
+        }
+
+        // Toggle Admin Modal
+        function toggleAdminPanel() {
+            document.getElementById('admin-modal').classList.toggle('hidden');
+        }
+
+        // Save Admin Data & Apply Live
+        function saveAdminData() {
+            const dpVal = document.getElementById('admin-dp').value;
+            const toolsText = document.getElementById('admin-tools-textarea').value;
+            
+            localStorage.setItem('naqash_admin_dp', dpVal);
+            localStorage.setItem('naqash_admin_tools_text', toolsText);
+            
+            toggleAdminPanel();
+            renderPortfolio();
+            alert('VIP Admin Suite updated successfully! All tools are now live and clickable.');
+        }
+
+        // Reset Admin Data
+        function resetAdminData() {
+            localStorage.clear();
+            renderPortfolio();
+            alert('Reset to default configurations.');
+        }
+
+        // PWA Working Option
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            const installBtn = document.getElementById('pwa-install-btn');
+            installBtn.classList.remove('hidden');
+
+            installBtn.addEventListener('click', () => {
+                installBtn.classList.add('hidden');
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    deferredPrompt = null;
+                });
+            });
+        });
+
+        // Visitor Counter
+        let visits = localStorage.getItem('naqash_visitor_count') || 1410;
+        if (!localStorage.getItem('visited_session')) {
+            visits++;
+            localStorage.setItem('naqash_visitor_count', visits);
+            localStorage.setItem('visited_session', 'true');
+        }
+        document.getElementById('visitor-count').textContent = visits;
+
+        // Initialize on load
+        window.onload = renderPortfolio;
+    </script>
+</body>
+</html>
